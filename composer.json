@@ -1,0 +1,31 @@
+{
+    "name": "demokn/yii2-wework-bot",
+    "description": "使用企业微信群机器人发送消息, https://work.weixin.qq.com/api/doc/90000/90136/91770",
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "demokn",
+            "email": "demo.knyang@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "yiisoft/yii2": "~2.0.14",
+        "guzzlehttp/guzzle": "~6.3"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "~2.16",
+        "phpunit/phpunit": "~8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "demokn\\weworkbot\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "demokn\\weworkbot\\tests\\": "tests/"
+        }
+    }
+}
