@@ -25,11 +25,28 @@ composer require "demokn/yii2-wework-bot:~1.0"
         'webhook' => 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_SECRET_KEY',
         'testMode' => !YII_ENV_PROD,
      ],
+    // 注册多个实例
     'anotherWeworkBot' => [
         'class' => \demokn\weworkbot\Bot::class,
         'webhook' => 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_SECRET_KEY',
         'testMode' => !YII_ENV_PROD,
      ],
+    // 配置日志Target, 使用企业微信群机器人上报日志
+    'log' => [
+        'traceLevel' => YII_DEBUG ? 3 : 0,
+        'targets' => [
+            [
+                'class' => \yii\log\FileTarget::class,
+                'levels' => ['error', 'warning'],
+            ],
+            [
+                'class' => \demokn\weworkbot\LogTarget::class,
+                'levels' => ['error', 'warning'],
+                'logVars' => [],
+                'bot' => 'weworkBot',
+            ],
+        ],
+    ],
     // ...
 ],
 ```

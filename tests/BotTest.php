@@ -3,6 +3,8 @@
 namespace demokn\weworkbot\tests;
 
 use demokn\weworkbot\Bot;
+use demokn\weworkbot\LogTarget;
+use yii\log\FileTarget;
 
 class BotTest extends TestCase
 {
@@ -21,6 +23,21 @@ class BotTest extends TestCase
                     'class' => Bot::class,
                     'webhook' => 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_SECRET_KEY',
                     'testMode' => true,
+                ],
+                'log' => [
+                    'traceLevel' => YII_DEBUG ? 3 : 0,
+                    'targets' => [
+                        [
+                            'class' => FileTarget::class,
+                            'levels' => ['error', 'warning'],
+                        ],
+                        [
+                            'class' => LogTarget::class,
+                            'levels' => ['error', 'warning'],
+                            'logVars' => [],
+                            'bot' => 'weworkBot',
+                        ],
+                    ],
                 ],
             ],
         ]);
